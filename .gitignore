@@ -5,3 +5,13 @@ research/plots
 __pycache__
 *.pyc
 *.pyo
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.spl
