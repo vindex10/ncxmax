@@ -1,0 +1,66 @@
+\begin{thebibliography}{6}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Andr{\'{a}}s and Baricz(2008)}]{Andrs2008}
+\bibinfo{author}{Andr{\'{a}}s, S.}, \bibinfo{author}{Baricz, {\'{A}}.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Properties of the probability density function of the
+  non-central chi-squared distribution}.
+\newblock \bibinfo{journal}{Journal of Mathematical Analysis and Applications}
+  \bibinfo{volume}{346}, \bibinfo{pages}{395--402}.
+\newblock \URLprefix \url{https://doi.org/10.1016/j.jmaa.2008.05.074},
+  \DOIprefix\doi{10.1016/j.jmaa.2008.05.074}.
+%Type = Misc
+\bibitem[{Boost C++ Libraries, v1.76.0()}]{boost}
+Boost C++ Libraries, v1.76.0, \bibinfo{year}{2021}.
+\newblock \URLprefix \url{https://www.boost.org/}.
+%Type = Misc
+\bibitem[{{F.~W.~J.~Olver et al.}(2021)}]{NIST:DLMF}
+\bibinfo{author}{{F.~W.~J.~Olver et al.}}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{\it NIST Digital Library of Mathematical
+  Functions}}.
+\newblock \bibinfo{howpublished}{http://dlmf.nist.gov/}.
+\newblock \URLprefix \url{http://dlmf.nist.gov/}.
+%Type = Article
+\bibitem[{Horgan and Murphy(2013)}]{hogan2013}
+\bibinfo{author}{Horgan, D.}, \bibinfo{author}{Murphy, C.C.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{On the convergence of the chi square and noncentral
+  chi square distributions to the normal distribution}.
+\newblock \bibinfo{journal}{IEEE Communications Letters} \bibinfo{volume}{17},
+  \bibinfo{pages}{2233--2236}.
+\newblock \DOIprefix\doi{10.1109/LCOMM.2013.111113.131879}.
+%Type = Book
+\bibitem[{Press et~al.(2007)Press, William H. (University~of Texas~Press,
+  Teukolsky, Vetterling, Saul A. (Cornell University~Teukolsky and
+  Flannery}]{NR}
+\bibinfo{author}{Press, W.H.}, \bibinfo{author}{William H. (University~of
+  Texas~Press, A.}, \bibinfo{author}{Teukolsky, S.A.},
+  \bibinfo{author}{Vetterling, W.T.}, \bibinfo{author}{Saul A. (Cornell
+  University~Teukolsky, N.Y.}, \bibinfo{author}{Flannery, B.P.},
+  \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Numerical Recipes 3rd Edition}.
+\newblock \URLprefix \url{http://numerical.recipes/}.
+%Type = Article
+\bibitem[{Saulis(2001)}]{Saulis2001}
+\bibinfo{author}{Saulis, L.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{Asymptotic expansion for the distribution and density
+  functions of the quadratic form of a stationary gaussian process in the large
+  deviation cramer zone}.
+\newblock \bibinfo{journal}{Nonlinear Analysis: Modelling and Control}
+  \bibinfo{volume}{6}, \bibinfo{pages}{87--101}.
+\newblock \URLprefix \url{https://doi.org/10.15388/na.2001.6.1.15218},
+  \DOIprefix\doi{10.15388/na.2001.6.1.15218}.
+
+\end{thebibliography}
