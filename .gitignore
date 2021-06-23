@@ -1,0 +1,7 @@
+*.exe
+boost-test/plots
+research/plots
+.ipynb_checkpoints
+__pycache__
+*.pyc
+*.pyo
