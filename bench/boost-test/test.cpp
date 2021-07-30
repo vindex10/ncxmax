@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     double nc = strtod(argv[3], NULL);
     bool run_new = strcmp(argv[1], "new") == 0;
     cout << (run_new ? "new" : "old") << "\t" << dof << "\t" <<  nc;
-    non_central_chi_squared_distribution ncx2(dof, nc);
+    non_central_chi_squared_distribution<long double> ncx2(dof, nc);
 
     double res, guess;
     if (run_new) {
