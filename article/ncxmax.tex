@@ -247,46 +247,40 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_2.png}
-		\caption{}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_2.png}
+        \caption{}\label{boost-k-fixed_2}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_15.png}
-		\caption{}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_15.png}
+		\caption{}\label{boost-k-fixed_15}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_50.png}
-		\caption{}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.png}
+		\caption{}\label{boost-k-fixed_50}
 	\end{subfigure}
-	\caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2,15,50$. Vertical line shows the threshold at which corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
+    \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
 \end{figure}
 %
-\paragraph{Dependency on d.o.f ($k$)} In the set of plots in Fig.~\ref{fig:boost-lam-fixed}, we fix the asymptotic scale to values $\frac{k}{\lambda} = 0.25, 0.15, 0.05$ and investigate the dependency of the run time on the number of d.o.f. Since the threshold is fixed, the difference in the run time is caused by the actual position where the original initial guess starts to undershoot, the non-conservative threshold. The farther the fixed threshold is from the non-conservative threshold, the more significant the effect of undershooting at the test point will be. Therefore, we expect the difference in the run time to grow with number of d.o.f, as follows from Eq.~\ref{eq:boost-alpha-thresh}. For each value of the asymptotic scale, in addition to the full plot, we also show a zoomed version that shows the region where both original and improved methods were able to converge~\ref{fig:boost-lam-fixed}.
+\paragraph{Dependency on d.o.f ($k$)} In the set of plots in Fig.~\ref{fig:boost-scale-fixed}, we fix the asymptotic scale to values $\frac{k}{\lambda} = 0.25, 0.15, 0.05$ and investigate the dependency of the run time on the number of d.o.f. Since the threshold is fixed, the difference in the run time is caused by the actual position where the original initial guess starts to undershoot, the non-conservative threshold. The farther the fixed threshold is from the non-conservative threshold, the more significant the effect of undershooting at the test point will be. Therefore, we expect the difference in the run time to grow with number of d.o.f, as follows from Eq.~\ref{eq:boost-alpha-thresh}. For each value of the asymptotic scale, in addition to the full plot, we also show a zoomed version that shows the region where both original and improved methods were able to converge~\ref{fig:boost-scale-fixed}.
 %
 \begin{figure}[t]
-	\centering
+    \centering
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_25.png}
-		\caption{}
+        \includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_25.png}
+        \caption{}\label{boost-scale-fixed_0_25}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_15.png}
-		\caption{}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_15.png}
+		\caption{}\label{boost-scale-fixed_0_15}
 	\end{subfigure} \\
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_05.png}
-		\caption{}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_05.png}
+		\caption{}\label{boost-scale-fixed_0_05}
 	\end{subfigure}
-	\caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25,0.15,0.05$. The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-lam-fixed}
+    \caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25$~(\ref{boost-scale-fixed_0_25}), $\frac{k}{\lambda}=0.15$~(\ref{boost-scale-fixed_0_15}), $\frac{k}{\lambda}=0.05$~(\ref{boost-scale-fixed_0_05}). The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-scale-fixed}
 \end{figure}
 
 \section{Conclusion}
