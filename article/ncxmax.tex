@@ -260,7 +260,7 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.png}
 		\caption{}\label{boost-k-fixed_50}
 	\end{subfigure}
-    \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
+    \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which the corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
 \end{figure}
 %
 \paragraph{Dependency on d.o.f ($k$)} In the set of plots in Fig.~\ref{fig:boost-scale-fixed}, we fix the asymptotic scale to values $\frac{k}{\lambda} = 0.25, 0.15, 0.05$ and investigate the dependency of the run time on the number of d.o.f. Since the threshold is fixed, the difference in the run time is caused by the actual position where the original initial guess starts to undershoot, the non-conservative threshold. The farther the fixed threshold is from the non-conservative threshold, the more significant the effect of undershooting at the test point will be. Therefore, we expect the difference in the run time to grow with number of d.o.f, as follows from Eq.~\ref{eq:boost-alpha-thresh}. For each value of the asymptotic scale, in addition to the full plot, we also show a zoomed version that shows the region where both original and improved methods were able to converge~\ref{fig:boost-scale-fixed}.
