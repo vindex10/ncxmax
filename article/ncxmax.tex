@@ -242,59 +242,53 @@ We see that large $k$ corresponds to small thresholds $\alpha$. The most conserv
 
 The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to the asymptotic scale $t$~(Eq.~\ref{eq:asymp-scale}) that we used for finding the approximate solution, specifically: $t = \frac{k}{\lambda} = \frac{1}{\alpha}$. For example, the conservative threshold $\alpha \approx 3.5$ corresponds to the asymptotic scale $t \approx 0.25 < 1$. It means that the region where the original guess of Boost undershoots, is, at the same time, the region where our approximate solution for the mode becomes applicable and can be used as a corrected initial guess. However, the fact that we use the conservative threshold may lead to the situation where the original method has already started undershooting but $\lambda$ is not yet big enough to turn on the corrected regime.
 
-\paragraph{Dependency on $\lambda$} We fix the threshold to the conservative value  $\frac{k}{\lambda} = 0.25$. We then plot the dependency of the run time on the non-centrality $\lambda$ for a set of d.o.f $k$: $2$, $15$, $50$, see Fig.~\ref{fig:boost-k-fixed}. We measure the run time 1000 times and use the median as a central value. The error bar is computed as $95\%$ quantile. We add noise with standard deviation $\sigma = 10^{-6}$ to parameters $k$ and $\lambda$ to avoid caching effects. The vertical line on the plots show the threshold where the original initial guess for smaller $\lambda$ is switched to the corrected value at bigger $\lambda$. Therefore, we expect that both lines coincide below the threshold and the improved solution would lie lower above the threshold. One can notice missing values on the curve representing the original initial guess. The reason for this is the numerical instability of the algorithm in Boost, that has been resolved after we corrected the initial guess.
+\paragraph{Dependency on $\lambda$} We fix the threshold to the conservative value  $\frac{k}{\lambda} = 0.25$. We then plot the dependency of the run time on the non-centrality $\lambda$ for a set of d.o.f $k$: $2$, $15$, $50$, see Fig.~\ref{fig:boost-k-fixed}. For benchmarking we use the~\cite{gbenchmark} library. The benchmarking script itself became a part of the~\cite{gbench-script} library. Using this script we measure the run time 100 times and use the mean as a central value. The error bar is computed as a standard deviation. We add noise with standard deviation $\sigma = 10^{-6}$ to parameters $k$ and $\lambda$ to avoid caching effects. The vertical line on the plots shows the threshold where the original initial guess for smaller $\lambda$ is switched to the corrected value at bigger $\lambda$. Therefore, we expect that both lines coincide below the threshold and the improved solution would lie lower above the threshold. One can notice missing values on the curve representing the original initial guess. The reason for this is the numerical instability of the algorithm in Boost, that has been resolved after we corrected the initial guess.
 %
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_2.png}
-		\caption{$k=2$}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_2.png}
+        \caption{}\label{boost-k-fixed_2}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_15.png}
-		\caption{$k=15$}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_15.png}
+		\caption{}\label{boost-k-fixed_15}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_k_fixed_50.png}
-		\caption{$k=50$}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.png}
+		\caption{}\label{boost-k-fixed_50}
 	\end{subfigure}
-	\caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2,15,50$. Vertical line shows the threshold at which corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
+    \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which the corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
 \end{figure}
 %
-\paragraph{Dependency on d.o.f ($k$)} In the set of plots in Fig.~\ref{fig:boost-lam-fixed}, we fix the asymptotic scale to values $\frac{k}{\lambda} = 0.25, 0.15, 0.05$ and investigate the dependency of the run time on the number of d.o.f. Since the threshold is fixed, the difference in the run time is caused by the actual position where the original initial guess starts to undershoot, the non-conservative threshold. The farther the fixed threshold is from the non-conservative threshold, the more significant the effect of undershooting at the test point will be. Therefore, we expect the difference in the run time to grow with number of d.o.f, as follows from Eq.~\ref{eq:boost-alpha-thresh}. For each value of the asymptotic scale, in addition to the full plot, we also show a zoomed version that shows the region where both original and improved methods were able to converge~\ref{fig:boost-lam-fixed}.
+\paragraph{Dependency on d.o.f ($k$)} In the set of plots in Fig.~\ref{fig:boost-scale-fixed}, we fix the asymptotic scale to values $\frac{k}{\lambda} = 0.25, 0.15, 0.05$ and investigate the dependency of the run time on the number of d.o.f. Since the threshold is fixed, the difference in the run time is caused by the actual position where the original initial guess starts to undershoot, the non-conservative threshold. The farther the fixed threshold is from the non-conservative threshold, the more significant the effect of undershooting at the test point will be. Therefore, we expect the difference in the run time to grow with number of d.o.f, as follows from Eq.~\ref{eq:boost-alpha-thresh}. For each value of the asymptotic scale, in addition to the full plot, we also show a zoomed version that shows the region where both original and improved methods were able to converge~\ref{fig:boost-scale-fixed}.
 %
 \begin{figure}[t]
-	\centering
+    \centering
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_25.png}
-		\caption{$\frac{k}{\lambda}=0.25$}
+        \includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_25.png}
+        \caption{}\label{boost-scale-fixed_0_25}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_15.png}
-		\caption{$\frac{k}{\lambda}=0.15$}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_15.png}
+		\caption{}\label{boost-scale-fixed_0_15}
 	\end{subfigure} \\
 	\begin{subfigure}[t]{0.46\textwidth}
-		\centering
-		\includegraphics[width=\linewidth]{boost_scale_fixed_0_05.png}
-		\caption{$\frac{k}{\lambda}=0.05$}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_05.png}
+		\caption{}\label{boost-scale-fixed_0_05}
 	\end{subfigure}
-	\caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25,0.15,0.05$. The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-lam-fixed}
+    \caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25$~(\ref{boost-scale-fixed_0_25}), $\frac{k}{\lambda}=0.15$~(\ref{boost-scale-fixed_0_15}), $\frac{k}{\lambda}=0.05$~(\ref{boost-scale-fixed_0_05}). The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-scale-fixed}
 \end{figure}
 
 \section{Conclusion}
-In this paper we present an approximate expression for the mode of the non-central $\chi^2$ distribution: $x_{mode} \approx k + \lambda - 3$, where $k$ is the number of degrees of freedom and $\lambda$ is the non-centrality parameter. The approximation is based on an asymptotic expansion and is valid in the region where the scale parameter $\frac{k}{\lambda} << 1$ and where the mode exists $k > 2$. The approximate formula can be used as the initial guess for iterative procedures searching for a precise solution. Run time performance and the domain of applicability of the Boost implementation of the mode search was improved using the presented approximate expression.
+In this paper we present an approximate expression for the mode of the non-central $\chi^2$ distribution: $x_{mode} \approx k + \lambda - 3$, where $k$ is the number of degrees of freedom and $\lambda$ is the non-centrality parameter. The approximation is based on an asymptotic expansion and is valid in the region where the scale parameter $\frac{k}{\lambda} << 1$ and where the mode exists $k > 2$. The approximate formula can be used as the initial guess for iterative procedures searching for a precise solution. Run time performance and the domain of applicability of the Boost implementation of the mode search was improved using the presented approximate expression. The improvement became a part of the~\cite{gbench-script}.
 
 \section{Acknowledgements}
 
-We would like to thank Mykola~Semenyakin for the numerous fruitful and motivating discussions. This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.
+We would like to thank Mykola~Semenyakin for the numerous fruitful and motivating discussions. We also would like to acknowledge the support of the Boost community that allowed the contribution to become a part of the Boost Library. This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{bibliography.bib}
