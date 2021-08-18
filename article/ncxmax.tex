@@ -41,6 +41,7 @@
 \usepackage{amssymb}
 \usepackage{cuted}
 \usepackage{graphicx}
+\usepackage{epstopdf}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -66,14 +67,18 @@
 
 \title{Approximating the mode of the non-central chi-squared distribution}
 
-\author[uio]{Victor Ananyev}
-\author[uio]{Alexander Lincoln Read}
+\author[uio]{Victor Ananyev\corref{cor}\fnref{fn-insights}}
+\ead{victor.ananyev@gmail.com}
+\author[uio]{Alexander Lincoln Read\fnref{fn-insights}}
+\ead{a.l.read@fys.uio.no}
 \affiliation[uio]{organization={Department of Physics, University of Oslo},
             addressline={Blindern},
             city={Oslo},
             postcode={0316},
             state={Oslo},
             country={Norway}}
+\cortext[cor]{Corresponding author}
+\fntext[fn-inights]{This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.}
 
 \begin{abstract}
 In this paper we consider the probability density function (PDF) of the non-central $\chi^2$ distribution with arbitrary number of degrees of freedom and non-centrality. For this function we find the approximate location of the maximum and discuss related edge cases of 1 and 2 degrees of freedom. We also use this expression to demonstrate the improved performance of the C++ Boost's implementation of the non-central $\chi^2$ and extend the domain of its applicability.
@@ -118,13 +123,13 @@ We are interested in the value of $x_{mode}$ that maximizes $f_{k, \lambda}(x)$.
 	\centering
 	\begin{subfigure}[t]{0.22\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{ncx2-of-df.png}
+		\includegraphics[width=\linewidth]{ncx2-of-df.eps}
 		\caption{Dependency on the number of d.o.f.~$k$.}\label{fig:ncx2-curves-df}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[t]{0.22\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{ncx2-of-lambda.png}
+		\includegraphics[width=\linewidth]{ncx2-of-lambda.eps}
 		\caption{Dependency on the non-centrality $\lambda$.}\label{fig:ncx2-curves-lambda}
 	\end{subfigure}
 	\caption{Non-central $\chi^2$ distributions and behavior of the mode.}\label{fig:ncx2-curves}
@@ -134,7 +139,7 @@ When the number of degrees of freedom $k$ is fixed, we can plot the dependency o
 
 \begin{figure}[h]
 	\centering
- 	\includegraphics[width=0.44\textwidth]{ncx2-max.png}
+ 	\includegraphics[width=0.44\textwidth]{ncx2-max.eps}
 	\caption{Mode of the non-central $\chi^2$ as a function of the non-centrality parameter $\lambda$.}\label{fig:ncx2-max}
 \end{figure}
 
@@ -197,7 +202,7 @@ We plot the linear approximation Eq.~\ref{eq:main-result} together with the prec
 
 \begin{figure}[h]
 	\centering
- 	\includegraphics[width=0.44\textwidth]{ncx2-vs-approx.png}
+ 	\includegraphics[width=0.44\textwidth]{ncx2-vs-approx.eps}
 	\caption{Linear approximation to the mode of the non-central $\chi^2$ compared to the more precise numerical solution as a function of the non-centrality parameter $\lambda$.}\label{fig:ncx2-vs-approx}
 \end{figure}
 
@@ -247,17 +252,17 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_2.png}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_2.eps}
         \caption{}\label{boost-k-fixed_2}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_15.png}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_15.eps}
 		\caption{}\label{boost-k-fixed_15}
 	\end{subfigure}
 	\;
 	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.png}
+		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.eps}
 		\caption{}\label{boost-k-fixed_50}
 	\end{subfigure}
     \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which the corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
@@ -268,16 +273,16 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 \begin{figure}[t]
     \centering
 	\begin{subfigure}[t]{0.46\textwidth}
-        \includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_25.png}
+        \includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_25.eps}
         \caption{}\label{boost-scale-fixed_0_25}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}[t]{0.46\textwidth}
-		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_15.png}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_15.eps}
 		\caption{}\label{boost-scale-fixed_0_15}
 	\end{subfigure} \\
 	\begin{subfigure}[t]{0.46\textwidth}
-		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_05.png}
+		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_05.eps}
 		\caption{}\label{boost-scale-fixed_0_05}
 	\end{subfigure}
     \caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25$~(\ref{boost-scale-fixed_0_25}), $\frac{k}{\lambda}=0.15$~(\ref{boost-scale-fixed_0_15}), $\frac{k}{\lambda}=0.05$~(\ref{boost-scale-fixed_0_05}). The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-scale-fixed}
@@ -288,7 +293,7 @@ In this paper we present an approximate expression for the mode of the non-centr
 
 \section{Acknowledgements}
 
-We would like to thank Mykola~Semenyakin for the numerous fruitful and motivating discussions. We also would like to acknowledge the support of the Boost community that allowed the contribution to become a part of the Boost Library. This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.
+We would like to thank Mykola~Semenyakin for the numerous fruitful and motivating discussions. We also would like to acknowledge the support of the Boost community that allowed the contribution to become a part of the Boost Library.
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{bibliography.bib}
