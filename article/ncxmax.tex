@@ -81,7 +81,7 @@
 \fntext[fn-inights]{This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.}
 
 \begin{abstract}
-In this paper we consider the probability density function (PDF) of the non-central $\chi^2$ distribution with arbitrary number of degrees of freedom and non-centrality. For this function we find the approximate location of the maximum and discuss related edge cases of 1 and 2 degrees of freedom. We also use this expression to demonstrate the improved performance of the C++ Boost's implementation of the non-central $\chi^2$ and extend the domain of its applicability.
+In this paper we consider the probability density function (pdf) of the non-central $\chi^2$ distribution with arbitrary number of degrees of freedom and non-centrality. For this function we find the approximate location of the maximum and discuss related edge cases of 1 and 2 degrees of freedom. We also use this expression to demonstrate the improved performance of the C++ Boost's implementation of the non-central $\chi^2$ and extend the domain of its applicability.
 \end{abstract}
 
 \begin{keyword}
@@ -202,26 +202,26 @@ We plot the linear approximation Eq.~\ref{eq:main-result} together with the prec
 \subsection{Small number of degrees of freedom}\label{subsec:edge-cases}
 %
 \paragraph{Case $k < 2$}
-The asymptotic behavior of the modified Bessel function at $x \rightarrow 0$~\cite[Eq.~10.30.1]{NIST:DLMF} shows that the PDF of the non-central $\chi^2$ diverges, thus it doesn't have a mode:
+The asymptotic behavior of the modified Bessel function at $x \rightarrow 0$~\cite[Eq.~10.30.1]{NIST:DLMF} shows that the pdf of the non-central $\chi^2$ diverges, thus it doesn't have a mode:
 %
 \begin{align}
  &\chi^2_{k, \lambda}(x) \rightarrow \frac{1}{2\Gamma(\frac{k}{2})} \frac{1}{(2 \lambda)^{\frac{k - 2}{2}}} \mathrm{e}^{-\frac{\lambda}{2}} \left(\sqrt{\lambda x}\right)^{k-2}, \quad x \rightarrow 0\;.
 \end{align}
 %
 \paragraph{Case $k = 2$}
-In this case, the PDF at $x=0$ is finite. If the derivative at $x=0$ is positive, then the maximum is not there. The expression for the derivative (Eq.~\ref{eq:ncx2-pdf-k2}) and its asymptotic behavior at $x \rightarrow 0$ (Eq.~\ref{eq:ncx2-pdf-k2-0}) are shown below:
+In this case, the pdf at $x=0$ is finite. If the derivative at $x=0$ is positive, then the maximum is not there. The expression for the derivative (Eq.~\ref{eq:ncx2-pdf-k2}) and its asymptotic behavior at $x \rightarrow 0$ (Eq.~\ref{eq:ncx2-pdf-k2-0}) are shown below:
 %
 \begin{align}
  &\frac{d}{dx} \chi^2_{k, \lambda}(x) = \frac{1}{2} \chi^2_{d, \lambda}(x) \cdot \left[ -1 +  \sqrt{\frac{\lambda}{x}}\frac{I_{-1}(\sqrt{\lambda x})}{I_{0}(\sqrt{\lambda x})} \right]\label{eq:ncx2-pdf-k2}\;, \\
  &\frac{d}{dx} \chi^2_{k, \lambda}(x) \rightarrow \frac{1}{2} \chi^2_{d, \lambda}(x) \cdot \left[ -1 + \frac{\lambda}{2} \right], \quad x \rightarrow 0\label{eq:ncx2-pdf-k2-0}\;.
 \end{align}
 %
-We observe that when $\lambda > 2$, the PDF of the non-central $\chi^2$ doesn't have its maximum at $x = 0$. In the region $\lambda < 2$, the asymptotic scale $t = \frac{k}{\lambda} > 1$, hence our approximation is inapplicable in this region and we refrain from analysing it.
+We observe that when $\lambda > 2$, the pdf of the non-central $\chi^2$ doesn't have its maximum at $x = 0$. In the region $\lambda < 2$, the asymptotic scale $t = \frac{k}{\lambda} > 1$, hence our approximation is inapplicable in this region and we refrain from analysing it.
 
 \section{Application}
 There exist a number of numerical procedures for finding the mode of a distribution~\cite[Ch.~10]{NR}. Some of them require the search region to be specified.
 
-For example, the widely used C++ library Boost~(\cite{boost}) identifies the search region based on an initial guess for the mode $x_0$. Boost iteratively checks regions of the form $[x_0/2, 2x_0]$,  $[x_0/2^2, 2^2x_0]$, etc. When the value of the PDF at both ends of the region becomes smaller than the value at the initial guess point $x_0$, the algorithm initiates the search for the maximum inside of the region.
+For example, the widely used C++ library Boost~(\cite{boost}) identifies the search region based on an initial guess for the mode $x_0$. Boost iteratively checks regions of the form $[x_0/2, 2x_0]$,  $[x_0/2^2, 2^2x_0]$, etc. When the value of the pdf at both ends of the region becomes smaller than the value at the initial guess point $x_0$, the algorithm initiates the search for the maximum inside of the region.
 
 At the time of writing, Boost used $x_0 = k + 1$ as the initial guess. We already know, based on the approximate solution (Eq.~\ref{eq:main-result}), that the chosen guess will undershoot at large non-centrality values $\lambda$. Let's estimate $\lambda$ above which the method will require the second iteration for the region to cover the mode. For this we compare the linear estimate for the location of the mode~(Eq.~\ref{eq:main-result}) to the initial guess $x_0$ used by Boost:
 %
