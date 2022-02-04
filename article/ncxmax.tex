@@ -1,104 +1,62 @@
-%%
-%% Copyright 2007-2020 Elsevier Ltd
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% The list of all files belonging to the 'Elsarticle Bundle' is
-%% given in the file `manifest.txt'.
-%%
-%% Template article for Elsevier's document class `elsarticle'
-%% with harvard style bibliographic references
+\documentclass{amsart}
 
-\documentclass[final,5p,twocolumn,times,authoryear]{elsarticle}
-
-%% Use the option review to obtain double line spacing
-%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
-
-%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
-%% for a journal layout:
-%% \documentclass[final,1p,times,authoryear]{elsarticle}
-%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
-%% \documentclass[final,3p,times,authoryear]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
-%% \documentclass[final,5p,times,authoryear]{elsarticle}
-%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
-
-%% For including figures, graphicx.sty has been loaded in
-%% elsarticle.cls. If you prefer to use the old commands
-%% please give \usepackage{epsfig}
-
-%% The amssymb package provides various useful mathematical symbols
 \usepackage{hyperref}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{amssymb, amscd, amsmath, url}
 \usepackage{cuted}
 \usepackage{graphicx}
 \usepackage{epstopdf}
-\usepackage{caption}
 \usepackage{subcaption}
-
-
 
 \graphicspath{
     {./}
 }
 
-%% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
 
-%% The lineno packages adds line numbers. Start line numbering with
-%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
-%% for the whole article with \linenumbers.
-%% \usepackage{lineno}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{acknowledgement}{Acknowledgement}[section]
+\newtheorem{algorithm}{Algorithm}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{case}{Case}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem{conclusion}{Conclusion}[section]
+\newtheorem{condition}{Condition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{criterion}{Criterion}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{solution}{Solution}[section]
+\newtheorem{summary}{Summary}[section]
+\numberwithin{equation}{section}
 
-\journal{Journal of Mathematical Analysis and Applications}
+
 
 \begin{document}
 
-\begin{frontmatter}
+\title[Approximating the mode of the non-central chi-squared distribution]{Approximating the mode of the non-central chi-squared distribution}
 
-\title{Approximating the mode of the non-central chi-squared distribution}
+\subjclass[2020]{41-02, 33C10, 62-04}
 
-\author[uio]{Victor Ananyev\corref{cor}\fnref{fn-insights}}
-\ead{victor.ananyev@gmail.com}
-\author[uio]{Alexander Lincoln Read\fnref{fn-insights}}
-\ead{a.l.read@fys.uio.no}
-\affiliation[uio]{organization={Department of Physics, University of Oslo},
-            addressline={Blindern},
-            city={Oslo},
-            postcode={0316},
-            state={Oslo},
-            country={Norway}}
-\cortext[cor]{Corresponding author}
-\fntext[fn-inights]{This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.}
+\keywords{Non-central chi-squared; Mode; Linear approximation; Boost~C++; Performance}
+
+\author[Ananiev, Read]{\bfseries Viktor Ananiev$^{1,*}$, Alexander L. Read$^1$}
+
+\address{$^1$Department of Physics, University of Oslo}
+\address{$^*$Corresponding author: \textnormal{victor.ananyev@gmail.com}}
+
 
 \begin{abstract}
 In this paper we consider the probability density function (pdf) of the non-central $\chi^2$ distribution with arbitrary number of degrees of freedom and non-centrality. For this function we find the approximate location of the maximum and discuss related edge cases of 1 and 2 degrees of freedom. We also use this expression to demonstrate the improved performance of the C++ Boost's implementation of the non-central $\chi^2$ and extend the domain of its applicability.
 \end{abstract}
+\maketitle
 
-\begin{keyword}
-%% keywords here, in the form: keyword \sep keyword
-Non-central chi-squared \sep Mode \sep Linear approximation \sep Boost~C++ \sep Performance
-%% PACS codes here, in the form: \PACS code \sep code
-
-%% MSC codes here, in the form: \MSC code \sep code
-%% or \MSC[2008] code \sep code (2000 is the default)
-\MSC[2020] 41-02 \sep 33C10 \sep 62-04
-\end{keyword}
-
-\end{frontmatter}
-
-%% \linenumbers
-
-%% main text
+%=====Contents=======
 \section{Introduction}\label{introduction}
 Properties of the non-central $\chi^2$ distribution were described before in literature~(\cite{Andrs2008, hogan2013, Saulis2001}). However, the topic of the mode of the non-central $\chi^2$ was significantly underrepresented. We would like to focus on the mode specifically in this paper.
 
@@ -114,13 +72,13 @@ We are interested in the value of $x_{mode}$ that maximizes $f_{k, \lambda}(x)$.
 
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[t]{0.22\textwidth}
+	\begin{subfigure}[t]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{ncx2-of-df.eps}
 		\caption{Dependency on the number of d.o.f.~$k$.}\label{fig:ncx2-curves-df}
 	\end{subfigure}
-	\quad
-	\begin{subfigure}[t]{0.22\textwidth}
+	\qquad
+	\begin{subfigure}[t]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{ncx2-of-lambda.eps}
 		\caption{Dependency on the non-centrality $\lambda$.}\label{fig:ncx2-curves-lambda}
@@ -132,7 +90,7 @@ When the number of degrees of freedom $k$ is fixed, we can plot the dependency o
 
 \begin{figure}[h]
 	\centering
- 	\includegraphics[width=0.44\textwidth]{ncx2-max.eps}
+	\includegraphics[width=0.44\textwidth]{ncx2-max.eps}
 	\caption{Mode of the non-central $\chi^2$ as a function of the non-centrality parameter $\lambda$.}\label{fig:ncx2-max}
 \end{figure}
 
@@ -244,18 +202,16 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 %
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_2.eps}
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\linewidth]{boost_k_fixed_2.eps}
         \caption{}\label{boost-k-fixed_2}
 	\end{subfigure}
-	\;
-	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_15.eps}
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\linewidth]{boost_k_fixed_15.eps}
 		\caption{}\label{boost-k-fixed_15}
 	\end{subfigure}
-	\;
-	\begin{subfigure}[t]{0.35\textwidth}
-		\includegraphics[width=0.92\linewidth]{boost_k_fixed_50.eps}
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\linewidth]{boost_k_fixed_50.eps}
 		\caption{}\label{boost-k-fixed_50}
 	\end{subfigure}
     \caption{Run time as a function of the non-centrality $\lambda$ for d.o.f. $k=2$~(\ref{boost-k-fixed_2}), $k=15$~(\ref{boost-k-fixed_15}), $k=50$~(\ref{boost-k-fixed_50}). Vertical line shows the threshold at which the corrected expression replaces the original initial guess.}\label{fig:boost-k-fixed}
@@ -265,17 +221,16 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 %
 \begin{figure}[t]
     \centering
-	\begin{subfigure}[t]{0.46\textwidth}
-        \includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_25.eps}
+	\begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\linewidth]{boost_scale_fixed_0_25.eps}
         \caption{}\label{boost-scale-fixed_0_25}
 	\end{subfigure}
-	\quad
-	\begin{subfigure}[t]{0.46\textwidth}
-		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_15.eps}
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\linewidth]{boost_scale_fixed_0_15.eps}
 		\caption{}\label{boost-scale-fixed_0_15}
-	\end{subfigure} \\
-	\begin{subfigure}[t]{0.46\textwidth}
-		\includegraphics[width=0.93\linewidth]{boost_scale_fixed_0_05.eps}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.3\textwidth}
+		\includegraphics[width=\linewidth]{boost_scale_fixed_0_05.eps}
 		\caption{}\label{boost-scale-fixed_0_05}
 	\end{subfigure}
     \caption{Run time as a function of the number of d.o.f. ($k$) for the asymptotic scale values $\frac{k}{\lambda}=0.25$~(\ref{boost-scale-fixed_0_25}), $\frac{k}{\lambda}=0.15$~(\ref{boost-scale-fixed_0_15}), $\frac{k}{\lambda}=0.05$~(\ref{boost-scale-fixed_0_05}). The upper plot in each pair shows the zoomed version, focused on the region where both original and improved methods were able to converge.}\label{fig:boost-scale-fixed}
@@ -285,12 +240,18 @@ The threshold $\alpha$~(Eq.~\ref{eq:boost-alpha-thresh}) is closely related to t
 In this paper we present an approximate expression for the mode of the non-central $\chi^2$ distribution: $x_{mode} \approx k + \lambda - 3$, where $k$ is the number of degrees of freedom and $\lambda$ is the non-centrality parameter. The approximation is based on an asymptotic expansion and is valid in the region where the scale parameter $\frac{k}{\lambda} << 1$ and where the mode exists $k > 2$. The approximate formula can be used as the initial guess for iterative procedures searching for a precise solution. Run time performance and the domain of applicability of the Boost implementation of the mode search was improved using the presented approximate expression. The improvement became a part of the~\cite{gbench-script}.
 
 \section{Acknowledgements}
-
 We would like to thank Mykola~Semenyakin for the numerous fruitful and motivating discussions. We also would like to acknowledge the support of the Boost community that allowed the contribution to become a part of the Boost Library. This research was supported by the European Unions Framework Programme for Research and Innovation Horizon 2020 (2014-2021) under the Marie Sklodowska-Curie Grant Agreement No.765710.
 
-\bibliographystyle{elsarticle-harv}
-\bibliography{bibliography.bib}
-
+\begin{thebibliography}{99}
+\bibitem{NIST:DLMF} F. W. J. Olver et al., NIST Digital Library of Mathematical Functions, (2021). \url{http://dlmf.nist.gov/}.
+\bibitem{NR} William H. Press and William H.  and Saul A. Teukolsky and William T. Vetterling and Saul A. and Brian P. Flannery, Numerical Recipes 3rd Edition, (2007). \url{http://numerical.recipes/}.
+\bibitem{boost} Boost C++ Libraries, v1.76.0, (2021). \url{https://www.boost.org/}.
+\bibitem{gbenchmark} Google benchmark, (2021). \url{https://github.com/google/benchmark}.
+\bibitem{gbench-script} Boost Math, (2021). \url{https://github.com/boostorg/math/pull/645}.
+\bibitem{Andrs2008} S. Andr{\'{a}}s and {\'{A}}. Baricz, Properties of the probability density function of the non-central chi-squared distribution, Journal of Mathematical Analysis and Applications 346 2 (2008), 395--402. \url{https://doi.org/10.1016/j.jmaa.2008.05.074}.
+\bibitem{hogan2013} D. Horgan and C. C. Murphy, On the Convergence of the Chi Square and Noncentral Chi Square Distributions to the Normal Distribution, IEEE Communications Letters 17 12 (2013), 2233--2236. \url{https://doi.org/10.1109/LCOMM.2013.111113.131879}.
+\bibitem{Saulis2001} L. Saulis, Asymptotic Expansion for the Distribution and Density Functions of the Quadratic Form of a Stationary Gaussian Process in the Large Deviation Cramer Zone, Nonlinear Analysis: Modelling and Control 6 2 (2001) 87--101. \url{https://doi.org/10.15388/na.2001.6.1.15218}.
+\bibitem{sawant2021analytical} S. S. Sawant and D. A. Levin and V. Theofilis, Analytical Prediction of Low-Frequency Fluctuations Inside a One-Dimensional Shock, arXiv:physics.flu-dyn (2021). \url{https://arxiv.org/abs/2101.00664}.
+\bibitem{Pereyra1967} V. Pereyra, Iterated deferred corrections for nonlinear operator equations, Numerische Mathematik 10 4 (1967). \url{https://doi.org/10.1007/bf02162030}.
+\end{thebibliography}
 \end{document}
-
-\endinput

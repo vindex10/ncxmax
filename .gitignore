@@ -10,6 +10,7 @@ __pycache__
 *.blg
 *.dvi
 *.fdb_latexmk
+*.synctex.gz
 *.fls
 *.log
 *.out
